@@ -17,7 +17,6 @@ cdef bint IS_VENV = sys.prefix != sys.base_prefix
 def run():
 	cli = StorageTestCLI(StorageTestCLI.getConfig())
 	cli.run(sys.argv[1:])
-
 cdef class StorageTestCLI:
 	cdef object parser
 	cdef object option
@@ -45,7 +44,7 @@ cdef class StorageTestCLI:
 
 	cdef testPeopleRTStorage(self):
 		cdef str resourcePath = self.getResourcePath()
-		cdef str path = f'{resourcePath}/People.RT.bin'
+		cdef str path = (f'{resourcePath}/People.bin').encode('utf-8').decode('utf-8')
 		cdef StreamIOHandler io = StreamIOHandler(path)
 		cdef PeopleRTStorage storage = PeopleRTStorage(io)
 		cdef bint isNew = not os.path.isfile(path)
@@ -186,7 +185,7 @@ cdef class StorageTestCLI:
 		if not os.path.isdir(resourcePath): os.makedirs(resourcePath)
 
 	cdef str getResourcePath(self):
-		if IS_VENV: return f'{sys.prefix}/var/xtore'
+		if IS_VENV: return (f'{sys.prefix}/var/xtore').encode('utf-8').decode('utf-8')
 		else: return '/var/xtore'
 
 	@staticmethod
