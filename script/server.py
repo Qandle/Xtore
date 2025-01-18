@@ -7,36 +7,6 @@ sys.path.append('/mnt/e/xtore/Xtore/src')
 from xtore.cli.StorageTestCLI import StorageTestCLI, run
 
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
-
-"""async def handle_client(reader, writer):
-    data = await reader.read(1024)
-    message = data.decode('utf-8')
-    print(f"Received: {message}")
-    command = json.loads(message)
-    test = command.get("test")
-    count = command.get("count")
-        
-    if not test or not count:
-        response = "Invalid command. Expected JSON with 'test' and 'count'."
-        writer.write(response.encode('utf-8'))
-        await writer.drain()
-        writer.close()
-        await writer.wait_closed()
-        return
-
-
-    cli = StorageTestCLI(StorageTestCLI.getConfig())
-    cli.option = type('Options', (object,), {"test": 'People.Hash', "count": 5})
-    cli.testPeopleHashStorage()
-
-    response = "Data received and stored"
-    writer.write(response.encode('utf-8'))
-    await writer.drain()
-
-    print("Closing connection")
-    writer.close()
-    await writer.wait_closed()
-"""
 async def handle_client(reader, writer):
     cli = None
     try:
@@ -49,7 +19,7 @@ async def handle_client(reader, writer):
         count = command.get("count")
         
         if not test or not count:
-            response = "Invalid command. Expected JSON with 'test' and 'count'."
+            response = "Invalid command"
             writer.write(response.encode('utf-8'))
             await writer.drain()
             writer.close()
@@ -59,7 +29,7 @@ async def handle_client(reader, writer):
         argv = [test, "-n", str(count)]
         sys.argv = ["server.py"] + argv
         run() 
-        response = f"Test {test} with count {count} completed successfully."
+        response = f"successfully"
     except Exception as e:
         response = f"Error: {str(e)}"
     finally:

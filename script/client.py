@@ -10,7 +10,7 @@ async def send_data():
     reader, writer = await asyncio.open_connection('127.0.0.1', 8888)
     command = {
         "test": "People.Hash",
-        "count": 10 
+        "count": 100 
     }
     data = json.dumps(command)
     print(f"Sending: {data}")
