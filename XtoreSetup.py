@@ -51,6 +51,9 @@ class XtoreSetup :
 		self.script = [
 			'xt-test',
 			'xt-service',
+			'db-cli',
+			'consistent',
+			'xt-server'
 		]
 
 		self.configList = [

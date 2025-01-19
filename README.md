@@ -13,3 +13,12 @@ source venv/bin/activate
 python XtoreSetup.py link
 python setup.py build
 ```
+
+- implement network 
+- implement replication (ReplicationIOHandler) _> local & network (write)
+- implement ReplicationIOService -> read write object & read write file
+
+- handling everything on service
+- protocol
+    - tcp -> uvloop
+    - application layer -> json
