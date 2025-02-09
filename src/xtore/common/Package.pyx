@@ -17,7 +17,7 @@ cdef class Package:
 	cdef registerClass(self, str tableName, object recordClass):
 		self.classMapper[tableName] = recordClass
 
-	cdef packForSet(self, Buffer *stream, str tableName, list[RecordNode] recordList):
+	cdef code(self, Buffer *stream, str tableName, list[RecordNode] recordList):
 		# cdef DatabaseOperation operation
 		# cdef InstanceType type
 		# cdef str tableName
@@ -33,7 +33,7 @@ cdef class Package:
 		for record in recordList:
 			record.write(stream)
 	
-	cdef list[RecordNode] unpackForSet(self, Buffer *stream):
+	cdef list[RecordNode] decode(self, Buffer *stream):
 		cdef list[RecordNode] result = []
 		cdef str tableName = getString(stream)
 		cdef object recordClass = self.classMapper.get(tableName, None)

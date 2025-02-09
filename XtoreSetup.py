@@ -56,7 +56,9 @@ class XtoreSetup :
 			'xt-replica',
 			'xt-start-service',
 			'xt-cli',
-			'xt-cluster'
+			'xt-cluster',
+			'xt-send',
+			'go-test'
 		]
 
 		self.configList = [
