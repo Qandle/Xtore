@@ -2,6 +2,7 @@ from xtore.BaseType cimport i32, i64
 from xtore.common.Buffer cimport Buffer, PyBytes_FromStringAndSize, getBuffer, initBuffer, releaseBuffer, setBuffer, setBytes
 
 from xtore.common.StreamIOHandler cimport StreamIOHandler
+from xtore.common.ReplicaIOHandler cimport ReplicaIOHandler
 from xtore.instance.BasicIterator cimport BasicIterator
 from xtore.instance.HashIterator cimport HashIterator
 from xtore.instance.RecordNode cimport RecordNode
@@ -64,8 +65,9 @@ cdef class StorageService:
 
 	cdef writeBSTStorage(self, list[People] dataList):
 		cdef str resourcePath = self.getResourcePath()
-		cdef str path = f'{resourcePath}/People.BST.bin'
-		cdef StreamIOHandler io = StreamIOHandler(path)
+		cdef str fileName = "People.BST.bin"
+		cdef str path = os.path.join(resourcePath, fileName)
+		cdef ReplicaIOHandler io = ReplicaIOHandler(path)
 		cdef PeopleBSTStorage storage = PeopleBSTStorage(io)
 		cdef bint isNew = not os.path.isfile(path)
 		io.open()

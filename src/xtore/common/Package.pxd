@@ -24,8 +24,8 @@ cdef class Package:
 	cdef str data
 
 	cdef registerClass(self, str tableName, object recordClass)
-	cdef packForSet(self, Buffer *stream, str tableName, list[RecordNode] recordList)
-	cdef list[RecordNode] unpackForSet(self, Buffer *stream)
+	cdef code(self, Buffer *stream, str tableName, list[RecordNode] recordList)
+	cdef list[RecordNode] decode(self, Buffer *stream)
 	
 
 	cdef readKey(self, Buffer *stream)

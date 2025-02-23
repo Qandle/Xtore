@@ -1,0 +1,10 @@
+{
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false,
+    "material-icon-theme.folders.associations": {
+  		"db1.venv": "environment",
+		"db2.venv": "environment",
+		"db3.venv": "environment",
+  	},
+}

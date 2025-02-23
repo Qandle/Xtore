@@ -9,7 +9,7 @@ from xtore.instance.BasicIterator cimport BasicIterator
 from xtore.instance.ScopeTreeStorage cimport ScopeTreeStorage
 from xtore.instance.ScopeSearch cimport ScopeSearch
 from xtore.instance.ScopeSearchResult cimport ScopeSearchResult
-from xtore.test.PeopleHomomorphic cimport PeopleHomomorphic
+# from xtore.test.PeopleHomomorphic cimport PeopleHomomorphic
 
 
 from faker import Faker
