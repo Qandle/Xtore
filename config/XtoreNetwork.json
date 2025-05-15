@@ -1,47 +1,41 @@
 {
-    "primeRing": [
+    "nodeList": [
 		{
 			"layer": 0,
-			"childStorageUnit": [
-				{
-					"ringId": 0,
-					"storageUnit": {
-						"master": {
-							"host": "localhost",
-							"port": 7410
-						},
-						"replica": [
-							{
-								"host": "localhost",
-								"port": 7411
-							},
-							{
-								"host": "localhost",
-								"port": 7412
-							}
-						]
-					}
-				},
-				{
-					"ringId": 1,
-					"storageUnit": {
-						"master": {
-							"host": "localhost",
-							"port": 7420
-						},
-						"replica": [
-							{
-								"host": "localhost",
-								"port": 7421
-							},
-							{
-								"host": "localhost",
-								"port": 7422
-							}
-						]
-					}
-				}
-			]
+			"ringId": 0,
+			"host": "localhost",
+			"port": 7410,
+			"isMaster": 1
+		},
+		{
+			"layer": 0,
+			"ringId": 0,
+			"host": "localhost",
+			"port": 7411,
+			"isMaster": 0
+		},
+		{
+			"layer": 0,
+			"ringId": 1,
+			"host": "localhost",
+			"port": 7420,
+			"isMaster": 1
+		},
+		{
+			"layer": 0,
+			"ringId": 1,
+			"host": "localhost",
+			"port": 7421,
+			"isMaster": 0
 		}
-    ]
+	],
+	"primeRing": {
+		"primeNumbers": [2, 3],
+		"replicaNumber": 2
+	},
+	"consistentHashing": {
+		"replicationFactor": 3,
+		"maxNode": 1024
+	},
+	"algorithm": 1
 }

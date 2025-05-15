@@ -25,7 +25,7 @@ cdef class StorageHandler:
 		self.config = config
 		initBuffer(&self.buffer, <char *> malloc(BUFFER_SIZE), BUFFER_SIZE)
 		self.isFulled = 0
-		self.maxCapacity = 5000
+		self.maxCapacity = 5_000_000
 		self.currentUsage = 0
 
 	def __dealloc__(self):
@@ -183,7 +183,7 @@ cdef class StorageHandler:
 		cdef RecordNode queryResult
 		for query in queries:
 			queryResult = storage.get(query, None)
-			print(f">> Get {queryResult}")
+			# print(f">> Get {queryResult}")
 			if queryResult is not None: queryResultList.append(queryResult)
 		return queryResultList
 

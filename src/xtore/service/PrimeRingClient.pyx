@@ -27,6 +27,7 @@ cdef class PrimeRingClient (DatabaseClient) :
 		self.primeRing = PrimeRing(primeNumbers = config["primeNumbers"], replicaNumber=config["replicaNumber"])
 		self.primeRing.loadData(self.nodeList)
 		self.handler = PrimeRingErrorHandler()
+		self.timer = 0
 		
 		self.storageUnit = {}
 
@@ -70,17 +71,18 @@ cdef class PrimeRingClient (DatabaseClient) :
 				record.surname = ""
 				successReturn = asyncio.run(self.request(method, record.ID, self.encodeData(method, instantType, tableName, [record])))
 				successList.append(successReturn)
-			print(f">> Elapsed time before resend: {time.time() - start:.2f} seconds")
-			asyncio.run(self.handler.resend(self.tcpClient, method, self.primeRing))
-			for pair in successList:
-				totalHit += pair[0]
-				totalAmount += pair[1]
-			if totalAmount > 0:
-				successRate = (totalHit / totalAmount) * 100
-				print(f">> {totalHit}/{totalAmount} records {successRate}% success rate.")
-			else:
-				print(f">> {totalHit}/{totalAmount} records 0% success rate.")
-			print(f">> Elapsed time after resend: {time.time() - start:.2f} seconds")
+			print(f">> Elapsed time: {self.timer:.2f} seconds")
+			# print(f">> Elapsed time before resend: {time.time() - start:.2f} seconds")
+			# asyncio.run(self.handler.resend(self.tcpClient, method, self.primeRing))
+			# for pair in successList:
+			# 	totalHit += pair[0]
+			# 	totalAmount += pair[1]
+			# if totalAmount > 0:
+			# 	successRate = (totalHit / totalAmount) * 100
+			# 	print(f">> {totalHit}/{totalAmount} records {successRate}% success rate.")
+			# else:
+			# 	print(f">> {totalHit}/{totalAmount} records 0% success rate.")
+			# print(f">> Elapsed time after resend: {time.time() - start:.2f} seconds")
 		elif method == DatabaseOperation.GETALL :
 			asyncio.run(self.request(method, None, self.encodeData(method, instantType, tableName, [])))
 
@@ -116,6 +118,7 @@ cdef class PrimeRingClient (DatabaseClient) :
 							break
 				self.connected = True
 				successReturn = None
+				start = time.time()
 				for task in asyncio.as_completed(tasks):
 					result = await task
 					if result == (1, 1):
@@ -124,6 +127,7 @@ cdef class PrimeRingClient (DatabaseClient) :
 				if successReturn is None:
 					successReturn = (0, 0)
 				successList = [successReturn]
+				self.timer += time.time() - start
 				self.connected = False
 			else :
 				record.ID = key
@@ -137,12 +141,14 @@ cdef class PrimeRingClient (DatabaseClient) :
 				successList = await asyncio.gather(*tasks)
 				self.connected = False
 		for pair in successList:
-			totalHit += pair[0]
-			totalAmount += pair[1]
+			if pair[0]:
+				totalHit += pair[0]
+			if pair[1]:
+				totalAmount += pair[1]
 		return totalHit, totalAmount
 
 	async def tcpClient(self, processID: str, message: bytes, host: str, port: int) :
-		cdef str prefix = f"[{processID}]({host}:{port})"
+		# cdef str prefix = f"[{processID}]({host}:{port})"
 		reader, writer = await asyncio.open_connection(host, port)
 		writer.write(message)
 		await writer.drain()
@@ -150,22 +156,23 @@ cdef class PrimeRingClient (DatabaseClient) :
 		cdef People people
 		cdef i32 success = 0
 		cdef i32 amount = 1
-		if self.decodeData(self.received) == []:
-			print(f"{prefix} >> NOT FOUND")
-			writer.close()
-			await writer.wait_closed()
-			return success, amount
-		for record in self.decodeData(self.received):
-			if isinstance(record, People):
-				people = record
-				if people.income == 0 and people.name == "" and people.surname == "":
-					print(f"{prefix} >> NOT FOUND")
-				else:
-					print(f"{prefix} >> {record}")
-					success += 1
-			else:
-				print(f"{prefix} >> FOUND {record}")
-				success += 1
+		# if self.decodeData(self.received) == []:
+		# 	print(f"{prefix} >> NOT FOUND")
+		# 	writer.close()
+		# 	await writer.wait_closed()
+		# 	return success, amount
+		# for record in self.decodeData(self.received):
+		# 	if isinstance(record, People):
+		# 		people = record
+		# 		if people.income == 0 and people.name == "" and people.surname == "":
+		# 			print(f"{prefix} >> NOT FOUND")
+		# 		else:
+		# 			print(f"{prefix} >> {record}")
+		# 			success += 1
+		# 	else:
+		# 		print(f"{prefix} >> FOUND {record}")
+		# 		success += 1
+		success = 1
 		writer.close()
 		await writer.wait_closed()
 

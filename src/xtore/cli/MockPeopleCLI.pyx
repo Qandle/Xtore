@@ -36,9 +36,15 @@ cdef class MockPeopleCLI:
 		cdef int n = self.option.number
 		faker = Faker()
 		cdef list rows = ["ID\tincome\tname\tsurname"]
+		cdef set ids = set()
 		cdef str configPath = os.path.join(sys.prefix, "etc", "testcase", f"{self.option.file}.tsv")
 		for _ in range(n):
-			_id = random.getrandbits(16)
+			# Generate unique ID
+			while True:
+				_id = random.getrandbits(32)
+				if _id not in ids:
+					ids.add(_id)
+					break
 			_income = random.randint(20_000, 100_000)
 			_name = faker.first_name()
 			_surname = faker.last_name()

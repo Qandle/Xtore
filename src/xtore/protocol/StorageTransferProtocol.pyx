@@ -21,12 +21,12 @@ cdef class StorageTransferProtocol (AsyncProtocol):
 
 	def connection_made(self, object transport):
 		self.transport = transport
-		print('Connection Made 🚀', end=" ")
-		print(*self.transport.get_extra_info('sockname'), sep="@")
+		# print('Connection Made 🚀', end=" ")
+		# print(*self.transport.get_extra_info('sockname'), sep="@")
 
 	def connection_lost(self, Exception exc):
-		print('Connection Lost ⛔', end=" ")
-		print(*self.transport.get_extra_info('sockname'), sep="@")
+		# print('Connection Lost ⛔', end=" ")
+		# print(*self.transport.get_extra_info('sockname'), sep="@")
 		self.transport = None
 		if exc:
 			print(f'Exception: <{exc}>')

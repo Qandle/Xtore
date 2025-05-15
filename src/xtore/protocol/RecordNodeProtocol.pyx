@@ -83,7 +83,7 @@ cdef class RecordNodeProtocol:
 			return PyBytes_FromStringAndSize(self.stream.buffer, self.stream.position)
 		elif self.operation == DatabaseOperation.SET:
 			recordList = self.decode(stream)
-			print(f'>> Received {len(recordList)} records')
+			# print(f'>> Received {len(recordList)} records')
 			if self.type == InstanceType.BST:
 				status = handler.writeToStorage(recordList, storage)
 				if status == 1:
@@ -95,9 +95,9 @@ cdef class RecordNodeProtocol:
 			return PyBytes_FromStringAndSize(self.stream.buffer, self.stream.position)
 		elif self.operation == DatabaseOperation.GET:
 			recordList = self.decode(stream)
-			print(f'>> Received {len(recordList)} keys')
+			# print(f'>> Received {len(recordList)} keys')
 			queryResponse = handler.readData(storage, recordList)
-			print(f'>> Sending {len(recordList)} records')
+			# print(f'>> Sending {len(recordList)} records')
 			self.encode(&self.stream, queryResponse)
 			return PyBytes_FromStringAndSize(self.stream.buffer, self.stream.position)
 		else:

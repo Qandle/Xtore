@@ -22,7 +22,7 @@ cdef class ConsistentHashingClient (DatabaseClient) :
 		DatabaseClient.__init__(self)
 		self.nodeList = nodeList
 		self.consistentHashing = ConsistentHashing(replicationFactor = config["replicationFactor"], maxNode=config["maxNode"])
-		self.consistentHashing.loadData(config)
+		self.consistentHashing.loadData(config["nodeList"])
 		self.consistentNodeList = []
 
 	cdef send(self, DatabaseOperation method, InstanceType instantType, str tableName, list data) :
@@ -117,16 +117,16 @@ cdef class ConsistentHashingClient (DatabaseClient) :
 			await writer.wait_closed()
 			return success, amount
 		for record in self.decodeData(self.received):
-			if isinstance(record, People):
-				people = record
-				if people.income == 0 and people.name == "" and people.surname == "":
-					print(f"{prefix} >> NOT FOUND")
-				else:
-					# print(f"{prefix} >> {record}")
-					success += 1
-			else:
-				print(f"{prefix} >> FOUND {record}")
-				success += 1
+			# if isinstance(record, People):
+			# 	people = record
+			# 	if people.income == 0 and people.name == "" and people.surname == "":
+			# 		print(f"{prefix} >> NOT FOUND")
+			# 	else:
+			# 		# print(f"{prefix} >> {record}")
+			# 		success += 1
+			# else:
+			# 	print(f"{prefix} >> FOUND {record}")
+			success += 1
 		writer.close()
 		await writer.wait_closed()
 

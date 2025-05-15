@@ -1,0 +1,10 @@
+xt-cli -f ./venv/etc/testcase/100k-1.tsv -m GET
+xt-cli -f ./venv/etc/testcase/100k-2.tsv -m GET
+xt-cli -f ./venv/etc/testcase/100k-3.tsv -m GET
+xt-cli -f ./venv/etc/testcase/100k-4.tsv -m GET
+xt-cli -f ./venv/etc/testcase/100k-5.tsv -m GET
+xt-cli -f ./venv/etc/testcase/100k-6.tsv -m GET
+xt-cli -f ./venv/etc/testcase/100k-7.tsv -m GET
+xt-cli -f ./venv/etc/testcase/100k-8.tsv -m GET
+xt-cli -f ./venv/etc/testcase/100k-9.tsv -m GET
+xt-cli -f ./venv/etc/testcase/100k-10.tsv -m GET

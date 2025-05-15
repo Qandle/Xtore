@@ -43,3 +43,12 @@ venv.bak/
 *.venv/
 *.venv-master/
 venv-master/
+
+tmp/
+test/__pycache__
+input.tsv
+input2.tsv
+generated_data_100k.tsv
+abc.tsv
+output.tsv
+test.tsv

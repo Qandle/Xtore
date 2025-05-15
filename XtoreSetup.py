@@ -64,7 +64,9 @@ class XtoreSetup :
 			'xt-server',
 			'xt-cluster',
 			'xt-consistent',
-			'xt-create-config'
+			'xt-create-config',
+			'xt-file-test',
+			'xt-superset',
 		]
 
 		if IS_HOMOMORPHIC: self.script.append('xt-homomorphic')

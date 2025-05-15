@@ -1,0 +1,50 @@
+{
+    "replicationFactor": 1,
+    "maxNode": 1023,
+    "nodeList": {
+        "0": {
+            "id": 137,
+            "host": "localhost",
+            "port": 7001
+        },
+        "1": {
+            "id": 251,
+            "host": "localhost",
+            "port": 7002
+        },
+        "2": {
+            "id": 382,
+            "host": "localhost",
+            "port": 7003
+        },
+        "3": {
+            "id": 514,
+            "host": "localhost",
+            "port": 7004
+        },
+        "4": {
+            "id": 644,
+            "host": "localhost",
+            "port": 7005
+        },
+        "5": {
+            "id": 774,
+            "host": "localhost",
+            "port": 7006
+        },
+        "6": {
+            "id": 893,
+            "host": "localhost",
+            "port": 7007
+        },
+        "7": {
+            "id": 1015,
+            "host": "localhost",
+            "port": 7008
+        }
+    },
+    "spacing": [
+        8.908387901298417,
+        127.875
+    ]
+}

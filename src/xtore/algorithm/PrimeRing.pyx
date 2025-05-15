@@ -21,6 +21,9 @@ cdef class PrimeRing:
 		cdef StorageUnit unit, previousUnit
 		cdef PrimeNode node
 		cdef list allStorageUnits = []
+
+		# if hashKey in self.hashTable:
+		# 	return [self.hashTable[hashKey]]
 		cdef i32 nodeInLayer = 1
 		cdef i32 index = 0
 		cdef i32 id = hashKey%self.primeNumbers[index]

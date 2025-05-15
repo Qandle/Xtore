@@ -1,0 +1,200 @@
+{
+    "replicationFactor": 1,
+    "maxNode": 1023,
+    "nodeList": {
+        "0": {
+            "id": 22,
+            "host": "localhost",
+            "port": 7001
+        },
+        "1": {
+            "id": 51,
+            "host": "localhost",
+            "port": 7002
+        },
+        "2": {
+            "id": 71,
+            "host": "localhost",
+            "port": 7003
+        },
+        "3": {
+            "id": 107,
+            "host": "localhost",
+            "port": 7004
+        },
+        "4": {
+            "id": 139,
+            "host": "localhost",
+            "port": 7005
+        },
+        "5": {
+            "id": 163,
+            "host": "localhost",
+            "port": 7006
+        },
+        "6": {
+            "id": 182,
+            "host": "localhost",
+            "port": 7007
+        },
+        "7": {
+            "id": 217,
+            "host": "localhost",
+            "port": 7008
+        },
+        "8": {
+            "id": 249,
+            "host": "localhost",
+            "port": 7009
+        },
+        "9": {
+            "id": 272,
+            "host": "localhost",
+            "port": 7010
+        },
+        "10": {
+            "id": 289,
+            "host": "localhost",
+            "port": 7011
+        },
+        "11": {
+            "id": 324,
+            "host": "localhost",
+            "port": 7012
+        },
+        "12": {
+            "id": 343,
+            "host": "localhost",
+            "port": 7013
+        },
+        "13": {
+            "id": 383,
+            "host": "localhost",
+            "port": 7014
+        },
+        "14": {
+            "id": 400,
+            "host": "localhost",
+            "port": 7015
+        },
+        "15": {
+            "id": 434,
+            "host": "localhost",
+            "port": 7016
+        },
+        "16": {
+            "id": 459,
+            "host": "localhost",
+            "port": 7017
+        },
+        "17": {
+            "id": 489,
+            "host": "localhost",
+            "port": 7018
+        },
+        "18": {
+            "id": 517,
+            "host": "localhost",
+            "port": 7019
+        },
+        "19": {
+            "id": 529,
+            "host": "localhost",
+            "port": 7020
+        },
+        "20": {
+            "id": 574,
+            "host": "localhost",
+            "port": 7021
+        },
+        "21": {
+            "id": 584,
+            "host": "localhost",
+            "port": 7022
+        },
+        "22": {
+            "id": 624,
+            "host": "localhost",
+            "port": 7023
+        },
+        "23": {
+            "id": 646,
+            "host": "localhost",
+            "port": 7024
+        },
+        "24": {
+            "id": 671,
+            "host": "localhost",
+            "port": 7025
+        },
+        "25": {
+            "id": 706,
+            "host": "localhost",
+            "port": 7026
+        },
+        "26": {
+            "id": 727,
+            "host": "localhost",
+            "port": 7027
+        },
+        "27": {
+            "id": 755,
+            "host": "localhost",
+            "port": 7028
+        },
+        "28": {
+            "id": 776,
+            "host": "localhost",
+            "port": 7029
+        },
+        "29": {
+            "id": 815,
+            "host": "localhost",
+            "port": 7030
+        },
+        "30": {
+            "id": 841,
+            "host": "localhost",
+            "port": 7031
+        },
+        "31": {
+            "id": 870,
+            "host": "localhost",
+            "port": 7032
+        },
+        "32": {
+            "id": 885,
+            "host": "localhost",
+            "port": 7033
+        },
+        "33": {
+            "id": 924,
+            "host": "localhost",
+            "port": 7034
+        },
+        "34": {
+            "id": 933,
+            "host": "localhost",
+            "port": 7035
+        },
+        "35": {
+            "id": 973,
+            "host": "localhost",
+            "port": 7036
+        },
+        "36": {
+            "id": 987,
+            "host": "localhost",
+            "port": 7037
+        },
+        "37": {
+            "id": 1022,
+            "host": "localhost",
+            "port": 7038
+        }
+    },
+    "spacing": [
+        9.246283973198064,
+        26.92105263157895
+    ]
+}

@@ -75,7 +75,7 @@ cdef class DistributedDBClientCLI :
 		self.stream.position = 0
 		self.getConfig()
 		if self.config["algorithm"] == 0: # Consistent Hashing
-			self.client = ConsistentHashingClient(self.config["consistentHashing"]["nodeList"], self.config["consistentHashing"])
+			self.client = ConsistentHashingClient(list(self.config["consistentHashing"]["nodeList"].values()), self.config["consistentHashing"])
 		elif self.config["algorithm"] == 1: # Prime Ring
 			self.client = PrimeRingClient(self.config["primeRing"]["nodeList"], self.config["primeRing"])
 		cdef list dataList = []
